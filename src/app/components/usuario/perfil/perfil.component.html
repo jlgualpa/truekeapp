@@ -1,0 +1,115 @@
+<section class="pt-3 d-flex justify-content-end col-md-10 m-auto">
+    <button (click)="updatePassword()" class="btn btn-primary">Cambiar Contraseña</button>
+</section>
+<form [formGroup]="perfilForm" class="d-flex flex-wrap m-auto py-3 col-md-10 col-sm-10">
+
+    <div class="col-md-6 text-center">
+        <h2 class="text-center">Datos Perfil</h2>
+        <img [src]="imageSource" class="img-fluid mb-3">
+        <section class="col-md-9 m-auto">
+            <input type="file" (change)="fileChangeEvent($event)" class="custom-file-input" id="customFileLang"
+                lang="es">
+            <label class="custom-file-label" for="customFileLang">Imagen</label>
+            <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="4 / 4"
+                [resizeToWidth]="150" format="png" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()"
+                (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()">
+            </image-cropper>
+        </section>
+        <div class="pb-3">
+            <section>
+                <span class="text-secondary">Usuario: {{registroEmail}}</span>
+            </section>
+            <section>
+                <span class="text-secondary">Fecha Registro: {{registroFecha}}</span>
+            </section>
+        </div>
+        <section>
+            <mat-form-field>
+                <input matInput placeholder="Nombres" [(ngModel)]="perfil.nombres" [formControl]="nombres" type="text"
+                    name="nombres" required>
+                <mat-error *ngIf="nombres.hasError('required')">
+                    Ingresar datos.
+                </mat-error>
+            </mat-form-field>
+        </section>
+        <section>
+            <mat-form-field>
+                <input matInput placeholder="Apellidos" [(ngModel)]="perfil.apellidos" [formControl]="apellidos"
+                    type="text" name="apellidos" required>
+                <mat-error *ngIf="apellidos.hasError('required')">
+                    Ingresar datos.
+                </mat-error>
+            </mat-form-field>
+        </section>
+    </div>
+    <div class="col-md-5 text-center">
+        <section>
+            <mat-form-field>
+                <textarea matInput placeholder="Dirección" [(ngModel)]="perfil.direccion" [formControl]="direccion"
+                    type="text" name="direccion" required></textarea>
+                <mat-error *ngIf="direccion.hasError('required')">
+                    Ingresar datos.
+                </mat-error>
+            </mat-form-field>
+        </section>
+        <section>
+            <mat-form-field>
+                <mat-label>Fecha Nacimiento</mat-label>
+                <input matInput [matDatepicker]="picker" [(ngModel)]="perfil.fecha_nacimiento"
+                    [formControl]="fecha_nacimiento" name="fecha_nacimiento">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </section>
+        <section class="mt-3">
+            <mat-radio-group placeholder="Sexo" [(ngModel)]="perfil.sexo" [formControl]="sexo" name="sexo">
+                <mat-radio-button value="HOMBRE" class="m-3">HOMBRE</mat-radio-button>
+                <mat-radio-button value="MUJER" class="m-3">MUJER</mat-radio-button>
+            </mat-radio-group>
+            <mat-error *ngIf="sexo.hasError('required')">
+                Seleccionar datos.
+            </mat-error>
+        </section>
+        <section>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title class="my-auto  text-primary">
+                        <mat-icon>contacts</mat-icon>
+                        <span class="mx-3">Ver Contactos</span>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div>
+                    <div class="float-right">
+                        <button mat-menu-item (click)="addContacto()">
+                            Agregar<mat-icon class="text-success mx-3">add_circle</mat-icon>
+                        </button>
+                    </div>
+                    <table mat-table [dataSource]="contactos" cdkDropList cdkDropListOrientation="horizontal"
+                        class="w-100" (cdkDropListDropped)="drop($event)">
+                        <ng-container matColumnDef="tipo">
+                            <th mat-header-cell cdkDrag *matHeaderCellDef> Tipo </th>
+                            <td mat-cell *matCellDef="let element" class="text-left"> {{element.tipo}} </td>
+                        </ng-container>
+                        <ng-container matColumnDef="contacto">
+                            <th mat-header-cell cdkDrag *matHeaderCellDef> Contacto </th>
+                            <td mat-cell *matCellDef="let element" class="text-left"> <span
+                                    class="mx-3">{{element.contacto}}</span>
+                                <span class="float-right ">
+                                    <mat-icon class="text-danger" (click)="deleteContacto(element.id)" role="button">
+                                        delete
+                                    </mat-icon>
+                                </span>
+                            </td>
+                        </ng-container>
+                        <tr mat-header-row *matHeaderRowDef="columns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+                    </table>
+                </div>
+            </mat-expansion-panel>
+        </section>
+        <section class="mt-5">
+            <button mat-raised-button (click)="savePerfil()" [disabled]="!perfilForm.valid"
+                class="btn btn-success m-auto">Guardar Perfil</button>
+        </section>
+    </div>
+</form>

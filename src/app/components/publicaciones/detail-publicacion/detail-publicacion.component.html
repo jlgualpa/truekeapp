@@ -1,0 +1,90 @@
+<div class="py-5">
+    <div *ngIf="objeto" class="d-flex flex-wrap col-md-10 col-sm-10 m-auto ">
+        <div class="col-md-5 col-sm-10 mb-3">
+            <div class="text-center mb-4">
+                <button class="btn btn-primary mr-3" (click)="back()">Atras</button>
+                <div *ngIf="propietario===true; then thenMenu else elseMenu">
+                </div>
+                <ng-template #thenMenu>
+                    <button class="btn btn-success mr-3" (click)="editPublicacion()">Editar</button>
+                    <button class="btn btn-danger" (click)="deleteObjeto(objeto.id)">Eliminar</button>
+                </ng-template>
+                <ng-template #elseMenu>
+                    <span *ngIf="objeto.disponible">
+                        <button class="btn btn-success" (click)="empezarIntercambio()">Comenzar
+                            Intercambio</button></span>
+                </ng-template>
+            </div>
+            <img [src]="objeto.imagen" class="img-fluid col-md-12">
+        </div>
+
+        <div class="col-md-7 col-sm-10">
+            <section>
+                <h2 class="text-uppercase">Detalle Publicación</h2>
+            </section>
+            <div class="border border-2">
+                <section>
+                    <p class="font-weight-bold">Nombre: </p>
+                    <mat-icon class="text-success">check</mat-icon>{{objeto.nombre}}
+                </section>
+                <div class="d-flex flex-wrap  ">
+                    <section>
+                        <p class="font-weight-bold">Categoria: </p>
+                        <mat-icon class="text-success">check</mat-icon>{{objeto.categorium.etiqueta}}
+                    </section>
+                    <section>
+                        <p class="font-weight-bold">Estado: </p>
+                        <mat-icon class="text-success">check</mat-icon>{{objeto.estado.etiqueta}}
+                    </section>
+                    <section>
+                        <p class="font-weight-bold">Fecha Publicación: </p>
+                        <mat-icon class="text-success">check</mat-icon>{{objeto.fecha_modificacion}}
+                    </section>
+                </div>
+                <section>
+                    <p class="font-weight-bold">Descripción: </p>
+                    <mat-icon class="text-success">check</mat-icon>
+                    <textarea matInput [(ngModel)]="objeto.descripcion" class="w-100" readonly></textarea>
+                </section>
+                <section>
+                    <div *ngIf="objeto.disponible===true; then thenDisponible else elseDisponible"></div>
+                    <ng-template #thenDisponible>
+                        <p class="text-primary font-weight-bold text-right"> Disponible</p>
+                    </ng-template>
+                    <ng-template #elseDisponible>
+                        <p class="text-danger font-weight-bold text-right"> No Disponible</p>
+                    </ng-template>
+                </section>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="perfil" class="col-md-10 col-sm-10 m-auto ">
+        <h2>Propietario</h2>
+        <div class="col-md-5 col-sm-10 mb-3">
+            <div class="d-flex flex-wrap my-2 border border-2">
+                <section>
+                    <img [src]="perfil.imagen" style="width: 100px; height: 100px;">
+                </section>
+                <section>
+                    <p>
+                        <mat-icon class="text-primary">check</mat-icon>{{perfil.nombres}} {{perfil.apellidos}}
+                    </p>
+                    <p>
+                        <mat-icon class="text-primary">check</mat-icon>{{perfil.sexo}}
+                    </p>
+                    <p>
+                        <mat-icon class="text-primary">check</mat-icon>{{perfil.fecha_nacimiento}}
+                    </p>
+                </section>
+                <section>
+                    <p>
+                        <mat-icon class="text-success">check</mat-icon>{{perfil.direccion}}
+                    </p>
+                    <p *ngFor="let contacto of contactos">
+                        <mat-icon class="text-success">check</mat-icon>{{contacto.tipo}}: {{contacto.contacto}}
+                    </p>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>

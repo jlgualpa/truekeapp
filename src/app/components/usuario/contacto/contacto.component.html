@@ -1,0 +1,40 @@
+<div class="container">
+    <p class="text-right">
+        <button mat-icon-button matSuffix (click)="closeMe()" title="Cancelar">
+            <mat-icon class="text-primary">cancel</mat-icon>
+        </button>
+    </p>
+    <form [formGroup]="newFormContacto">
+        <div mat-dialog-content>
+            <section class="text-center pb-3 text-success h5 text-uppercase ">
+                <label>Ingresar información</label>
+            </section>
+            <section>
+                <mat-form-field appearance="fill">
+                    <mat-error *ngIf="tipo.hasError('required')">
+                        Ingresar Datos.
+                    </mat-error>
+                    <mat-label>Tipo Contacto</mat-label>
+                    <mat-select [(ngModel)]="contactos.tipo" name="tipo" [formControl]="tipo" required>
+                        <mat-option *ngFor="let tipoC of tipoContacto" [value]="tipoC.value">
+                            {{tipoC.viewValue}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </section>
+            <section>
+                <mat-form-field>
+                    <mat-error *ngIf="contacto.hasError('required')">
+                        Ingresar Datos.
+                    </mat-error>
+                    <input matInput placeholder="Contacto" [(ngModel)]="contactos.contacto" [formControl]="contacto"
+                        type="text" name="contacto" required>
+                </mat-form-field>
+            </section>
+        </div>
+        <section class="align-items-center m-3" mat-dialog-actions>
+            <button mat-raised-button (click)="registrarContacto()" [disabled]="!newFormContacto.valid"
+                class="btn btn-success w-100">Guardar</button>
+        </section>
+    </form>
+</div>

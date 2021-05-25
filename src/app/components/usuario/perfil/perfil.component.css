@@ -1,0 +1,18 @@
+section{
+margin: 1em;
+}
+
+.mat-form-field{
+width: 75%;
+}
+
+label.custom-file-label {
+  text-align: left;
+  width: 150px;
+  margin: auto;
+}
+
+img{
+  width: 200px; 
+  height: 200px;
+}

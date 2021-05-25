@@ -1,0 +1,103 @@
+<div class="py-5">
+    <div *ngIf="intercambio" class="d-flex flex-wrap col-md-10 col-sm-10 m-auto ">
+        <div class="col-md-7 col-sm-10 mb-3">
+            <button class="btn btn-primary" (click)="back()">Atras</button>
+            <section>
+                <h2 class="text-uppercase text-center">Mensajes Proceso Intercambio</h2>
+            </section>
+            <section *ngIf="intercambio.id_estado==3">
+                <form [formGroup]="newFormMensaje">
+                    <textarea matInput placeholder="Mensaje" class="border border-2 w-100" [formControl]="mensaje"
+                        name="mensaje" required></textarea>
+                    <div class="text-right py-2">
+                        <button class="btn btn-success" (click)="registrarMensaje()"
+                            [disabled]="!newFormMensaje.valid">Enviar</button>
+                    </div>
+                </form>
+            </section>
+            <section>
+                <table mat-table [dataSource]="mensajes" cdkDropList cdkDropListOrientation="horizontal"
+                    (cdkDropListDropped)="drop($event)" class="m-auto">
+                    <ng-container matColumnDef="mensaje">
+                        <th mat-header-cell cdkDrag *matHeaderCellDef> Mensaje </th>
+                        <td mat-cell *matCellDef="let element" class="text-left"> {{element.mensaje}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="usuario">
+                        <th mat-header-cell cdkDrag *matHeaderCellDef> Usuario </th>
+                        <td mat-cell *matCellDef="let element" class="text-left small">
+
+                            {{element.fecha_modificacion}}
+                            <p>{{element.nombres}} {{element.apellidos}}</p>
+                        </td>
+                    </ng-container>
+                    <tr mat-header-row *matHeaderRowDef="columns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+                </table>
+            </section>
+        </div>
+
+        <div class="col-md-5 col-sm-10 text-center">
+            <section class="py-3" *ngIf="intercambio.id_estado==3">
+                <button *ngIf="intercambio.id_usuario==idUser" class="btn btn-primary mr-3"
+                    (click)="realizarIntercambio()">Realizar</button>
+                <button class="btn btn-danger ml-3" (click)="cancelarIntercambio()">Cancelar</button>
+            </section>
+            <mat-card class="example-card m-auto">
+                <img mat-card-image [src]="intercambio.objeto.imagen" alt="" style="height:210px; width: 210px;"
+                    class="m-auto pb-3">
+                <mat-card-content>
+                    <mat-card-title>{{intercambio.objeto.nombre}}</mat-card-title>
+                    <p>
+                        {{intercambio.objeto.descripcion | slice:0:20}} ...
+                    </p>
+                </mat-card-content>
+                <mat-divider class="border border-info"></mat-divider>
+                <mat-card-actions class="text-right">
+                    <a routerLink="/publicaciones/{{intercambio.objeto.id}}" class="btn btn-success">
+                        Detalle
+                    </a>
+                </mat-card-actions>
+            </mat-card>
+            <section class="py-3">
+
+                <div>
+                    <span class="font-weight-bold">Estado Intercambio:</span> {{intercambio.estado.etiqueta}}
+                    <mat-icon class="text-success">check</mat-icon>
+                </div>
+                <div>
+                    <span class="font-weight-bold">Fecha Inicio Intercambio:</span> {{intercambio.fecha_modificacion}}
+                    <mat-icon class="text-success">check</mat-icon>
+                </div>
+            </section>
+
+            <section *ngIf="intercambio.id_estado==4 && intercambio.calificado==false && intercambio.id_usuario==idUser"
+                class="py-3">
+                <form [formGroup]="newFormCalificacion" class="col-md-6 col-sm-10 m-auto border border-2 py-4">
+                    <p>Calificación Intercambio</p>
+                    <p class="clasificacion">
+                        <input id="radio1" type="radio" name="estrellas" value="5" [formControl]="calificacion">
+                        <label for="radio1">★</label>
+                        <input id="radio2" type="radio" name="estrellas" value="4" [formControl]="calificacion">
+                        <label for="radio2">★</label>
+                        <input id="radio3" type="radio" name="estrellas" value="3" [formControl]="calificacion">
+                        <label for="radio3">★</label>
+                        <input id="radio4" type="radio" name="estrellas" value="2" [formControl]="calificacion">
+                        <label for="radio4">★</label>
+                        <input id="radio5" type="radio" name="estrellas" value="1" [formControl]="calificacion">
+                        <label for="radio5">★</label>
+                    </p>
+                    <button class="btn btn-success" (click)="calificar()"
+                        [disabled]="!newFormCalificacion.valid">Enviar</button>
+                </form>
+            </section>
+            <section *ngIf="intercambio.id_estado==4 && intercambio.calificado==true" class="py-3">
+                <div class="col-md-6 col-sm-10 m-auto border border-2 py-4">
+                    <p>Calificación Intercambio</p>
+                    <p class="clasificacion">
+                        <span *ngFor="let i of [].constructor(intercambio.puntaje)" class="puntaje">★</span>
+                    </p>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>

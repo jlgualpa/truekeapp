@@ -1,1 +1,22 @@
-/* You can add global styles to this file, and also import other style files */
+html, body{
+  height:100%;
+  margin: 0;
+}
+
+.columnList {
+    column-count: 2;
+}
+
+.example-card {
+    margin: 2em;
+    max-width: 250px;
+}
+
+  textarea{
+    height: 100px;
+}
+
+
+
+
+

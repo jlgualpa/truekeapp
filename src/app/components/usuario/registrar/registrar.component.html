@@ -1,0 +1,39 @@
+<div class="container">
+    <p class="text-right">
+        <button mat-icon-button (click)="closeMe()" title="Cancelar" class="text-primary">
+            <mat-icon>cancel</mat-icon>
+        </button>
+    </p>
+
+    <form [formGroup]="newFormUsuario">
+        <section class="text-center pb-3 text-success h5 text-uppercase ">
+            <label>Registro Trueke App</label>
+        </section>
+        <section>
+            <mat-form-field>
+                <mat-error *ngIf="usuarioEmail.hasError('email') && !usuarioEmail.hasError('required')">
+                    Formato email incorecto.
+                </mat-error>
+                <input matInput placeholder="Email" [(ngModel)]="usuario.email" [formControl]="usuarioEmail"
+                    type="email" name="email" required>
+            </mat-form-field>
+        </section>
+        <section>
+            <mat-form-field>
+                <mat-error *ngIf="usuarioPwd.hasError('minlength') && !usuarioPwd.hasError('required')">
+                    Minimo 6 caracteres.
+                </mat-error>
+                <input matInput placeholder="Contraseña" [(ngModel)]="usuario.password" [formControl]="usuarioPwd"
+                    [type]="hide ? 'password' : 'text'" name="password" required>
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+            </mat-form-field>
+        </section>
+        <section class="align-items-center m-5">
+            <button mat-raised-button (click)="registrarUsuario()" [disabled]="!newFormUsuario.valid"
+                class="btn btn-success w-100">Registrar</button>
+        </section>
+    </form>
+</div>

@@ -1,0 +1,72 @@
+<div mat-dialog-content>
+    <h1>{{data.titulo}}</h1>
+</div>
+<div class="py-3">
+    <mat-dialog-content class="text-justify">
+        <div *ngIf="data.id==1">
+            <ul class="list-group">
+                <li class="list-group-item">El uso del aplicativo web TruekeApp sera para todos los
+                    usuarios que ingresen al sitio web,
+                    pero para acceder a la funcionalidad completa el usuario debera registrase e iniciar sesion
+                    con sus credenciales de acceso.
+                </li>
+                <li class="list-group-item">El Usuario entiende y conviene en que es el único
+                    responsable de la informacion que se ingrese al aplicativo, además de llenar los datos de la
+                    sección "Perfil de Usuario" para poder publicar e intercambiar bienes.
+                </li>
+                <li class="list-group-item">El Usuario entiende y conviene en que es el único
+                    responsable de aceptar o rechazar el intercambio de un bien, por lo que el aplicativo no se
+                    hace responsable de las desiciones finales.
+                </li>
+                <li class="list-group-item">Una vez realizado un intercambio el aplicativo guardara la
+                    información y no se le permitira
+                    al usario eliminar cualquier iformación referente a los bienes que interfieren en el
+                    intercambio realizado.
+                </li>
+                <li class="list-group-item">El usuario debe mantener una actitud respetuosa hacia el
+                    resto de usuarios, caso contrario de
+                    haber alguna novedad reportada se procedera a desactivar su cuenta.
+                </li>
+            </ul>
+        </div>
+        <div *ngIf="data.id==2">
+            <ul class="list-group">
+                <li class="list-group-item">TruekeApp solo recolecta datos personales que el
+                    Usuario ingresa
+                    de forma voluntaria y que son necesarios para el flujo del intercambio de bienes.</li>
+                <li class="list-group-item">Todos los datos serán usados de forma informativa
+                    entre los
+                    usuarios del aplicativo.</li>
+                <li class="list-group-item">Los datos podrán ser usados por TruekeApp como medio
+                    de contacto
+                    para notificar a los Usuarios sobre cambios en el aplicativo web.
+                </li>
+                <li class="list-group-item">Se prohibe el contenido que propicie el acoso, el
+                    bullying o que
+                    incite a la violencia.</li>
+                <li class="list-group-item">Se prohibe el contenido que incluya vocabulario o
+                    gestos
+                    obscenos, ofensivos o vulgares.</li>
+                <li class="list-group-item">Se prohibe la publicación de fotos o videos en los
+                    que se pueda
+                    identificar a las personas sin su permiso, de haber reporte sobre este tipo de
+                    contenidos se procedera a eliminarlos.</li>
+            </ul>
+        </div>
+        <div *ngIf="data.id==3">
+            <ul class="list-group">
+                <li class="list-group-item">Registrar usuarios.</li>
+                <li class="list-group-item">Publicar bienes.</li>
+                <li class="list-group-item">Realizar intercambio de bienes entre los usuarios.
+                </li>
+                <li class="list-group-item">Registrar el proceso de intercambio de inicio a fin.
+                </li>
+            </ul>
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+        <span class="m-auto">
+            <button mat-button (click)="cerrar()" cdkFocusInitial>Cerrar</button>
+        </span>
+    </mat-dialog-actions>
+</div>

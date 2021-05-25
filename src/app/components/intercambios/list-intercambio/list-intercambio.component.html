@@ -1,0 +1,44 @@
+<div class="pt-5 col-md-10 col-sm-10 m-auto">
+    <h2 class="m-0">Seleccionados</h2>
+    <mat-divider></mat-divider>
+</div>
+<div class="d-flex flex-wrap m-auto col-md-10 col-sm-10 justify-content-around">
+    <section *ngFor="let intercambio of intercambioSeleccionado">
+        <mat-card class="example-card">
+            <img mat-card-image [src]="intercambio.objeto.imagen" alt="" style="height:210px; width: 210px;"
+                class="m-auto pb-3">
+            <mat-card-content>
+                <mat-card-title>{{intercambio.objeto.nombre}}</mat-card-title>
+                <span class="text-danger">{{intercambio.estado.etiqueta}}</span>
+            </mat-card-content>
+            <mat-divider class="border border-info"></mat-divider>
+            <mat-card-actions class="text-center">
+                <a routerLink="/intercambio/{{intercambio.id}}" class="btn btn-success">
+                    Detalle
+                </a>
+            </mat-card-actions>
+        </mat-card>
+    </section>
+</div>
+<div class="pt-5 col-md-10 col-sm-10 m-auto">
+    <h2 class="m-0">Publicados</h2>
+    <mat-divider></mat-divider>
+</div>
+<div class="d-flex flex-wrap m-auto col-md-10 col-sm-10 justify-content-around">
+    <section *ngFor="let intercambiop of intercambioPublicado">
+        <mat-card class="example-card">
+            <img mat-card-image [src]="intercambiop.objeto.imagen" alt="" style="height:210px; width: 210px;"
+                class="m-auto pb-3">
+            <mat-card-content>
+                <mat-card-title>{{intercambiop.objeto.nombre}}</mat-card-title>
+                <span class="text-danger">{{intercambiop.estado.etiqueta}}</span>
+            </mat-card-content>
+            <mat-divider class="border border-info"></mat-divider>
+            <mat-card-actions class="text-center">
+                <a routerLink="/intercambio/{{intercambiop.id}}" class="btn btn-success">
+                    Detalle
+                </a>
+            </mat-card-actions>
+        </mat-card>
+    </section>
+</div>

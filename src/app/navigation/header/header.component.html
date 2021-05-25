@@ -1,0 +1,64 @@
+<nav class="navbar navbar-expand navbar-dark bg-light py-4 bg-transparent ">
+    <div class="d-block d-sm-none">
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon style="transform: scale(2);" class="text-white">menu</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+            <div *ngIf="menuHeader===true; then thenMenuM else elseMenuM"></div>
+            <ng-template #thenMenuM>
+                <button mat-menu-item (click)="homeLogin()">
+                    <mat-icon class="text-success">home</mat-icon> <span class="nav-caption">Inicio</span>
+                </button>
+                <button mat-menu-item (click)="publicaciones()">
+                    <mat-icon class="text-success">folder_shared</mat-icon> <span class="nav-caption">Mis
+                        Publicaciones</span>
+                </button>
+                <button mat-menu-item (click)="intercambios()">
+                    <mat-icon class="text-success">sync</mat-icon> <span class="nav-caption">Mis
+                        Intercambios</span>
+                </button>
+                <button mat-menu-item (click)="perfil()">
+                    <mat-icon class="text-success">person</mat-icon> <span class="nav-caption">Perfil</span>
+                </button>
+                <button mat-menu-item (click)="salir()">
+                    <mat-icon class="text-success">logout</mat-icon> <span class="nav-caption">Salir</span>
+                </button>
+            </ng-template>
+            <ng-template #elseMenuM>
+                <button mat-menu-item (click)="home()">
+                    <mat-icon class="text-success">home</mat-icon> <span class="nav-caption">Inicio</span>
+                </button>
+                <button mat-menu-item (click)="registrarUsuario()">
+                    <mat-icon class="text-success">person_add</mat-icon> <span class="nav-caption">Registrarse</span>
+                </button>
+                <button mat-menu-item (click)="loginUsuario()">
+                    <mat-icon class="text-success">login</mat-icon><span class="nav-caption">Ingresar</span>
+                </button>
+            </ng-template>
+        </mat-menu>
+    </div>
+    <div class="text-center col-md-3 col-sm-9">
+        <img src="assets/images/logotrueke.png" class="img-fluid">
+    </div>
+
+    <div class="text-center col-md-6 d-none d-sm-block ">
+        <div *ngIf="menuHeader===true; then thenMenu else elseMenu"></div>
+        <ng-template #thenMenu>
+            <button mat-button (click)="homeLogin()"
+                class="border border-white bg-success text-white m-1">INICIO</button>
+            <button mat-button (click)="publicaciones()" class="border border-white bg-success text-white m-1">MIS
+                PUBLICACIONES</button>
+            <button mat-button (click)="intercambios()" class="border border-white bg-success text-white m-1">MIS
+                INTERCAMBIOS</button>
+            <button mat-button (click)="perfil()" class="border border-white bg-success text-white m-1">PERFIL</button>
+            <button mat-button (click)="salir()" class="border border-white bg-success text-white m-1">SALIR</button>
+        </ng-template>
+        <ng-template #elseMenu>
+            <button mat-button (click)="home()" class="border border-white bg-success text-white m-1">INICIO</button>
+            <button mat-button (click)="registrarUsuario()"
+                class="border border-white bg-success text-white m-1">REGISTRARSE</button>
+            <button mat-button (click)="loginUsuario()"
+                class="border border-white bg-success text-white m-1">INGRESAR</button>
+        </ng-template>
+    </div>
+</nav>

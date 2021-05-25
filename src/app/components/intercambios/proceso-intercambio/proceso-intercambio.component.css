@@ -1,0 +1,28 @@
+table {
+    width: 100%;
+}
+
+input[type="radio"] {
+    display: none;
+}
+  
+label, .puntaje {
+    color: grey;
+    margin-right: 5px;
+    font-size: 30px;
+}
+  
+.clasificacion {
+    direction: rtl;
+    unicode-bidi: bidi-override;
+}
+  
+label:hover,
+label:hover ~ label {
+    color: orange;
+    cursor:pointer;
+}
+  
+input[type="radio"]:checked ~ label {
+    color: orange;
+}

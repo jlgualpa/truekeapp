@@ -1,0 +1,29 @@
+<section class="pt-3 d-flex justify-content-end col-md-10 m-auto">
+    <button class="btn btn-primary" (click)="addPublicacion()">Nueva Publicación</button>
+</section>
+<div class="d-flex flex-wrap m-auto py-3 col-md-10 col-sm-10 justify-content-around">
+    <section *ngFor="let objeto of objetos">
+        <mat-card class="example-card">
+            <img mat-card-image [src]="objeto.imagen" alt="" style="height:210px; width: 210px;" class="m-auto pb-3">
+            <mat-card-content>
+                <mat-card-title>{{objeto.nombre}}</mat-card-title>
+                <p>
+                    {{objeto.descripcion | slice:0:20}} ...
+                </p>
+            </mat-card-content>
+            <mat-divider class="border border-info"></mat-divider>
+            <mat-card-actions class="text-right">
+                <div *ngIf="objeto.disponible===true; then thenDisponible else elseDisponible"></div>
+                <ng-template #thenDisponible>
+                    <span class="px-3 text-primary font-weight-bold"> Disponible</span>
+                </ng-template>
+                <ng-template #elseDisponible>
+                    <span class="px-3 text-danger font-weight-bold"> No Disponible</span>
+                </ng-template>
+                <a routerLink="/publicaciones/{{objeto.id}}" class="btn btn-success">
+                    Detalle
+                </a>
+            </mat-card-actions>
+        </mat-card>
+    </section>
+</div>

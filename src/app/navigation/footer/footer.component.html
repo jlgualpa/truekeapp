@@ -1,0 +1,25 @@
+<mat-toolbar class="h-auto d-flex flex-wrap  bg-transparent col-md-10 m-auto justify-content-around">
+    <section class="text-center">
+        <img src="assets/images/iconotrueke.png" class="mt-3">
+    </section>
+    <section class="text-center col-md-4">
+        <p class="text-success  mt-3 ">Información Trueke</p>
+        <ul class="columnList list-unstyled small text-white">
+            <li> <a (click)="infoDialog('Condiciones Uso Trueke App',1)">
+                    Condiciones Uso
+                </a></li>
+            <li><a (click)="infoDialog('Políticas Trueke App',2)">
+                    Políticas
+                </a></li>
+            <li><a (click)="infoDialog('Objetivos Trueke App',3)">
+                    Objetivos
+                </a></li>
+        </ul>
+    </section>
+    <mat-divider vertical style="height:100px" class="d-none d-sm-block border border-success"></mat-divider>
+    <section class="text-center col-md-3">
+        <mat-icon class="text-primary m-3">facebook</mat-icon>
+        <mat-icon class="text-warning m-3">camera</mat-icon>
+        <mat-icon class="text-danger m-3">play_circle_filed</mat-icon>
+    </section>
+</mat-toolbar>
