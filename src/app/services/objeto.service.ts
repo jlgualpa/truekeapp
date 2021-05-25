@@ -1,8 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
-const objetoUrl = 'http://localhost:8080/api/objeto';
+
+const objetoUrl = `${environment.APP_HTTP}/api/objeto`;
+
 const categoriasUrl = `${objetoUrl}/list/categorias`;
 const estadosUrl = `${objetoUrl}/list/estados`;
 
@@ -23,7 +26,15 @@ export class ObjetoService {
   }
 
   buscarObjetoId(id): Observable<any> {
-    return this.http.get(`${objetoUrl}/${id}`);
+    try {
+      //const res= this.http.get(`${objetoUrl}/${id}`);
+      return this.http.get(`${objetoUrl}/${id}`);
+    } catch (error) {
+      console.log('error servicio: ', error)
+    }
+
+    //return this.http.get(`${objetoUrl}/${id}`);
+
   }
 
   buscarObjetoIdUsuario(idUser): Observable<any> {

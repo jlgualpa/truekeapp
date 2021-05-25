@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
-const intercambioUrl = 'http://localhost:8080/api/intercambio';
+
+const intercambioUrl = `${environment.APP_HTTP}/api/intercambio`;
 const mensajeUrl = `${intercambioUrl}/mensaje`;
 
 @Injectable({

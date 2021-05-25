@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
-const userUrl = 'http://localhost:8080/api/usuario';
+
+const userUrl = `${environment.APP_HTTP}/api/usuario`;
+const perfilUrl = `${environment.APP_HTTP}/api/perfil`;
 const loginUrl = `${userUrl}/login`;
 const registrarUrl = `${userUrl}/registrar`;
-const perfilUrl = 'http://localhost:8080/api/perfil';
+
 const ContactoUrl = `${perfilUrl}/contacto`;
 
 @Injectable({
