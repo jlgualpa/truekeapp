@@ -1,8 +1,8 @@
 FROM node:10 as ng-build
 WORKDIR /app
 COPY . .
-RUN yarn 
-RUN yarn build
+RUN npm 
+RUN npm build
 
 FROM nginx:alpine
 COPY --from=ng-build /app/dist/app /usr/share/nginx/html
