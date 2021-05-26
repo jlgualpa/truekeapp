@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ImageCroppedEvent } from 'ngx-image-cropper';
-import { imageDefault } from 'SRC/app/shared/image.const';
+import { imageDefault } from 'src/app/shared/image.const';
 
 export interface DialogData {
   idObjeto: number;

@@ -8,7 +8,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ImageCroppedEvent } from 'ngx-image-cropper';
 import { DomSanitizer } from '@angular/platform-browser';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { imageDefault } from 'SRC/app/shared/image.const';
+import { imageDefault } from 'src/app/shared/image.const';
 
 
 @Component({
