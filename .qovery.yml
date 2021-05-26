@@ -1,0 +1,11 @@
+---
+application:
+  name: "truekeapp"
+  project: "AppWeb"
+  organization: "QoveryCommunity"
+routers:
+- name: "main-truekeapp"
+  routes:
+  - application_name: "truekeapp"
+    paths:
+    - "/*"
