@@ -3,6 +3,7 @@ application:
   name: "truekeapp"
   project: "Webapp"
   organization: "QoveryCommunity"
+  publicy_accesible: true
 routers:
 - name: "main-truekeapp"
   routes:
