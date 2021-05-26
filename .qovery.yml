@@ -2,10 +2,11 @@
 application:
   name: "app"
   project: "App"
+  publicly_accessible: true
   organization: "QoveryCommunity"
 routers:
 - name: "main-app"
   routes:
   - application_name: "app"
     paths:
-    - "/*"
+    - /
