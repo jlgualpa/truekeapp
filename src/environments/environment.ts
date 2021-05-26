@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  APP_HTTP: 'http://localhost:8080'
+  APP_HTTP: 'https://main-truekes-coo61rhw89ig5pqa-gtw.qovery.io'
 };
 
 /*
