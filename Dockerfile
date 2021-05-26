@@ -2,7 +2,7 @@ FROM node:12-alpine as ng-build
 WORKDIR /app
 COPY . .
 RUN npm install
-RUN npm run build
+RUN npm run build --prod
 
 FROM nginx:alpine
 # COPY --from=ng-build /app/dist/app /usr/share/nginx/html
