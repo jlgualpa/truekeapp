@@ -1,10 +1,8 @@
 FROM node:10 as ng-build
-WORKDIR /usr/src/app
-COPY package.json package-lock.json ./
-RUN npm install
+WORKDIR /app
+COPY . .
+RUN npm
 RUN npm build
-
-WORKDIR ./dist
 
 FROM nginx:alpine
 COPY --from=ng-build /app/dist/app /usr/share/nginx/html
