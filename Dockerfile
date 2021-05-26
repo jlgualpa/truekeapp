@@ -14,4 +14,4 @@ COPY . ./
 # COPY --from=build /usr/src/app/dist /usr/src/app
 # COPY --from=build /usr/src/app/node_modules /usr/src/app/node_modules
 EXPOSE 8081
-CMD [ "node", "server.js" ]
+CMD [ "ng", "serve" ]
