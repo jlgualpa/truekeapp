@@ -5,7 +5,7 @@
 
     <div class="col-md-6 text-center">
         <h2 class="text-center">Datos Perfil</h2>
-        <img [src]="imageSource" class="img-fluid mb-3">
+        <img *ngIf="imageSource" [src]="imageSource" class="img-fluid mb-3">
         <section class="col-md-9 m-auto">
             <input type="file" (change)="fileChangeEvent($event)" class="custom-file-input" id="customFileLang"
                 lang="es">

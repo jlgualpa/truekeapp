@@ -90,7 +90,7 @@ export class PerfilComponent implements OnInit {
               this.base64String = String.fromCharCode(...this.base64Objeto[1])
               this.imageSource = this.sanitizer.bypassSecurityTrustResourceUrl(this.base64String);
             } else {
-              this.toastr.error('Ingresar Datos Perfgil', 'Completar Datos');
+              this.toastr.error('Ingresar Datos Perfil', 'Completar Datos');
             }
           },
           error => {
