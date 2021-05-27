@@ -8,71 +8,74 @@
         <label>Datos publicación</label>
     </section>
     <form [formGroup]="newFormObjeto">
-        <div class="d-flex flex-wrap m-auto py-3">
-            <div class="col-md-6">
-                <section>
-                    <mat-form-field>
-                        <input matInput placeholder="Nombre" [(ngModel)]="objeto.nombre" [formControl]="objetoNombre"
-                            type="text" name="objetoNombre" required>
-                        <mat-error *ngIf="objetoNombre.hasError('required')">
-                            Ingresar dato.
-                        </mat-error>
-                    </mat-form-field>
-                </section>
-                <section>
-                    <mat-form-field>
-                        <textarea matInput placeholder="Descripción" [(ngModel)]="objeto.descripcion"
-                            [formControl]="objetoDescripcion" type="text" name="objetoDescripcion" required></textarea>
-                        <mat-error *ngIf="objetoDescripcion.hasError('required')">
-                            Ingresar dato.
-                        </mat-error>
-                    </mat-form-field>
-                </section>
-                <section>
-                    <mat-form-field appearance="fill">
-                        <mat-label>Categoria</mat-label>
-                        <mat-select [(ngModel)]="objeto.id_categoria" name="objetoIdCategoria"
-                            [formControl]="objetoIdCategoria" required>
-                            <mat-option *ngFor="let categoria of categorias" [value]="categoria.id">
-                                {{categoria.etiqueta}}
-                            </mat-option>
-                        </mat-select>
-                        <mat-error *ngIf="objetoIdCategoria.hasError('required')">
-                            Seleccionar Categoria.
-                        </mat-error>
-                    </mat-form-field>
-                </section>
-                <section>
-                    <mat-form-field appearance="fill">
-                        <mat-label>Estado</mat-label>
-                        <mat-select [(ngModel)]="objeto.id_estado" name="objetoIdEstado" [formControl]="objetoIdEstado"
-                            required>
-                            <mat-option *ngFor="let estado of estados" [value]="estado.id">
-                                {{estado.etiqueta}}
-                            </mat-option>
-                        </mat-select>
-                        <mat-error *ngIf="objetoIdEstado.hasError('required')">
-                            Seleccionar Estado.
-                        </mat-error>
-                    </mat-form-field>
-                </section>
-            </div>
-            <div class="col-md-6">
-                <img [src]="objeto.imagen" class="img-fluid mb-3">
-                <p class="text-center text-secondary">Seleccionar Imagen*</p>
-                <section class="col-9 m-auto">
-                    <input type="file" (change)="fileChangeEvent($event)" class="custom-file-input" id="customFileLang"
-                        lang="es">
-                    <label class="custom-file-label" for="customFileLang">Imagen</label>
-                    <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true"
-                        [aspectRatio]="4 / 4" [resizeToWidth]="150" format="png" (imageCropped)="imageCropped($event)"
-                        (imageLoaded)="imageLoaded()" (cropperReady)="cropperReady()"
-                        (loadImageFailed)="loadImageFailed()">
-                    </image-cropper>
-                </section>
+        <mat-dialog-content>
+            <div class="d-flex flex-wrap m-auto py-3">
+                <div class="col-md-6">
+                    <section>
+                        <mat-form-field>
+                            <input matInput placeholder="Nombre" [(ngModel)]="objeto.nombre"
+                                [formControl]="objetoNombre" type="text" name="objetoNombre" required>
+                            <mat-error *ngIf="objetoNombre.hasError('required')">
+                                Ingresar dato.
+                            </mat-error>
+                        </mat-form-field>
+                    </section>
+                    <section>
+                        <mat-form-field>
+                            <textarea matInput placeholder="Descripción" [(ngModel)]="objeto.descripcion"
+                                [formControl]="objetoDescripcion" type="text" name="objetoDescripcion"
+                                required></textarea>
+                            <mat-error *ngIf="objetoDescripcion.hasError('required')">
+                                Ingresar dato.
+                            </mat-error>
+                        </mat-form-field>
+                    </section>
+                    <section>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Categoria</mat-label>
+                            <mat-select [(ngModel)]="objeto.id_categoria" name="objetoIdCategoria"
+                                [formControl]="objetoIdCategoria" required>
+                                <mat-option *ngFor="let categoria of categorias" [value]="categoria.id">
+                                    {{categoria.etiqueta}}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="objetoIdCategoria.hasError('required')">
+                                Seleccionar Categoria.
+                            </mat-error>
+                        </mat-form-field>
+                    </section>
+                    <section>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Estado</mat-label>
+                            <mat-select [(ngModel)]="objeto.id_estado" name="objetoIdEstado"
+                                [formControl]="objetoIdEstado" required>
+                                <mat-option *ngFor="let estado of estados" [value]="estado.id">
+                                    {{estado.etiqueta}}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="objetoIdEstado.hasError('required')">
+                                Seleccionar Estado.
+                            </mat-error>
+                        </mat-form-field>
+                    </section>
+                </div>
+                <div class="col-md-6">
+                    <img [src]="objeto.imagen" class="img-fluid mb-3">
+                    <p class="text-center text-secondary">Seleccionar Imagen*</p>
+                    <section class="col-9 m-auto">
+                        <input type="file" (change)="fileChangeEvent($event)" class="custom-file-input"
+                            id="customFileLang" lang="es">
+                        <label class="custom-file-label" for="customFileLang">Imagen</label>
+                        <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true"
+                            [aspectRatio]="4 / 4" [resizeToWidth]="150" format="png"
+                            (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()"
+                            (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()">
+                        </image-cropper>
+                    </section>
 
+                </div>
             </div>
-        </div>
+        </mat-dialog-content>
         <section class="text-center m-3">
             <button mat-raised-button (click)="saveObjeto()" [disabled]="!newFormObjeto.valid"
                 class="btn btn-success">Guardar</button>
