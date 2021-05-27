@@ -34,7 +34,6 @@ export class DetailPublicacionComponent implements OnInit {
 
   getObjeto(): void {
     const id = +this.route.snapshot.paramMap.get('id');
-    console.log('id objeto', id)
     this.objetoService.buscarObjetoId(id)
       .subscribe(data => {
 
@@ -44,7 +43,6 @@ export class DetailPublicacionComponent implements OnInit {
           this.propietario = false
         }
 
-        console.log('objeto', data)
         this.base64Objeto = Object.values(data.imagen);
         data.imagen = this.sanitizer.bypassSecurityTrustResourceUrl(String.fromCharCode(...this.base64Objeto[1]));
         this.objeto = data

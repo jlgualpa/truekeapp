@@ -137,7 +137,6 @@ export class AddPublicacionComponent implements OnInit {
   imageCropped(event: ImageCroppedEvent) {
     this.croppedImage = event.base64;
     this.base64Image = event.base64;
-    console.log(this.base64Image);
   }
 
   imageLoaded() {

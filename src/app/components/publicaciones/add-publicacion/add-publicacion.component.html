@@ -7,8 +7,8 @@
     <section class="text-center text-success h5 text-uppercase ">
         <label>Datos publicación</label>
     </section>
-    <form [formGroup]="newFormObjeto">
-        <mat-dialog-content>
+    <mat-dialog-content>
+        <form [formGroup]="newFormObjeto">
             <div class="d-flex flex-wrap m-auto py-3">
                 <div class="col-md-6">
                     <section>
@@ -75,10 +75,10 @@
 
                 </div>
             </div>
-        </mat-dialog-content>
-        <section class="text-center m-3">
-            <button mat-raised-button (click)="saveObjeto()" [disabled]="!newFormObjeto.valid"
-                class="btn btn-success">Guardar</button>
-        </section>
-    </form>
+            <section class="text-center m-3">
+                <button mat-raised-button (click)="saveObjeto()" [disabled]="!newFormObjeto.valid"
+                    class="btn btn-success">Guardar</button>
+            </section>
+        </form>
+    </mat-dialog-content>
 </div>
