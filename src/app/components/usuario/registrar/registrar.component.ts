@@ -3,6 +3,7 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 import { MatDialogRef } from '@angular/material/dialog';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registrar',
@@ -32,7 +33,7 @@ export class RegistrarComponent implements OnInit {
     usuarioPwd: this.usuarioPwd,
   });
 
-  constructor(private dialogRef: MatDialogRef<RegistrarComponent>, private usuarioService: UsuarioService, private toastr: ToastrService) { }
+  constructor(private dialogRef: MatDialogRef<RegistrarComponent>, private usuarioService: UsuarioService, private toastr: ToastrService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -49,8 +50,12 @@ export class RegistrarComponent implements OnInit {
             this.usuarioService.registrarUsuario(data)
               .subscribe(
                 response => {
-                  this.dialogRef.close();
-                  this.toastr.success('Ingresar a TruekeApp', 'Registro Realizado');
+                  localStorage.setItem('idUser', response.id);
+                  this.toastr.success('Bienvenido a Trueke App', 'Registro Realizado');
+                  this.dialogRef.close({
+                    login: true
+                  });
+                  this.router.navigate(['perfil']);
                 });
           } else {
             this.toastr.error('El email se encuentra registrado', 'Verificar Datos');

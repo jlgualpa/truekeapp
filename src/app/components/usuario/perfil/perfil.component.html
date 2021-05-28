@@ -1,7 +1,4 @@
-<section class="pt-3 d-flex justify-content-end col-md-10 m-auto">
-    <button (click)="updatePassword()" class="btn btn-primary">Cambiar Contraseña</button>
-</section>
-<form [formGroup]="perfilForm" class="d-flex flex-wrap m-auto py-3 col-md-10 col-sm-10">
+<form [formGroup]="perfilForm" class="d-flex flex-wrap m-auto pt-5 col-md-10 col-sm-10">
 
     <div class="col-md-6 text-center">
         <h2 class="text-center">Datos Perfil</h2>
@@ -21,6 +18,9 @@
             </section>
             <section>
                 <span class="text-secondary">Fecha Registro: {{registroFecha}}</span>
+            </section>
+            <section>
+                <button (click)="updatePassword()" class="btn btn-primary">Cambiar Contraseña</button>
             </section>
         </div>
         <section>
@@ -107,7 +107,7 @@
                 </div>
             </mat-expansion-panel>
         </section>
-        <section class="mt-5">
+        <section class="my-5">
             <button mat-raised-button (click)="savePerfil()" [disabled]="!perfilForm.valid"
                 class="btn btn-success m-auto">Guardar Perfil</button>
         </section>

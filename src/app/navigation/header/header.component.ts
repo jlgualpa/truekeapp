@@ -22,7 +22,12 @@ export class HeaderComponent implements OnInit {
   }
 
   registrarUsuario(): void {
-    this.dialog.open(RegistrarComponent);
+    const dialogRef = this.dialog.open(RegistrarComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.menuHeader = result.login;
+      }
+    });
   }
 
   loginUsuario(): void {
