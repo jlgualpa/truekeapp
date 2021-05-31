@@ -5,7 +5,7 @@ application:
   organization: "QoveryCommunity"
   publicy_accesible: true
 routers:
-- name: "truekeapp"
+- name: "main-truekeapp"
   routes:
   - application_name: "truekeapp"
     paths:
