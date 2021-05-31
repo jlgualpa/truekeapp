@@ -46,6 +46,7 @@ import { DialogConfirmComponent } from './navigation/dialog-confirm/dialog-confi
 import { ProcesoIntercambioComponent } from './components/intercambios/proceso-intercambio/proceso-intercambio.component';
 import { ListIntercambioComponent } from './components/intercambios/list-intercambio/list-intercambio.component';
 import { InformacionComponent } from './navigation/informacion/informacion.component';
+import { PinchZoomModule } from 'ngx-pinch-zoom';
 
 
 
@@ -85,7 +86,7 @@ import { InformacionComponent } from './navigation/informacion/informacion.compo
       positionClass: 'toast-top-center' //,
       //preventDuplicates: true,
     }),
-    NgImageSliderModule
+    NgImageSliderModule, PinchZoomModule
   ],
   providers: [],
   bootstrap: [AppComponent]
