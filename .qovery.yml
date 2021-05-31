@@ -4,6 +4,7 @@ application:
   project: "Webapp"
   organization: "QoveryCommunity"
   publicy_accesible: true
+  domain: my.truekee
 routers:
 - name: "main-truekeapp"
   routes:
