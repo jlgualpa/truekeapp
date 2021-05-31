@@ -20,5 +20,16 @@ export class FooterComponent implements OnInit {
     this.dialog.open(InformacionComponent, { data: { titulo: titulo, id: id } });
   }
 
+  instagram() {
+    window.open('https://www.instagram.com/trueke77', '_blank');
+  }
+
+  youTube() {
+    window.open('https://www.youtube.com/channel/UCc70977AE0bVnAo5FhEEeIw', '_blank');
+  }
+
+  faceBook() {
+    window.open('https://www.instagram.com/trueke77', '_blank');
+  }
 
 }
