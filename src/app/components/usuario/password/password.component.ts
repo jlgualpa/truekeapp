@@ -3,6 +3,7 @@ import { ToastrService } from 'ngx-toastr';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { MatDialogRef } from '@angular/material/dialog';
+import * as CryptoJS from 'crypto-js';
 
 @Component({
   selector: 'app-password',
@@ -42,7 +43,7 @@ export class PasswordComponent implements OnInit {
 
 
   savePassword(): void {
-    this.usuario.password = this.usuarioPwd.value;
+    this.usuario.password = CryptoJS.AES.encrypt(this.usuarioPwd.value.trim(), 'PassTrueApp').toString();
     this.usuarioService.updateUsuario(this.idUser, this.usuario)
       .subscribe(
         response => {

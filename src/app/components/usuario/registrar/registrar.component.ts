@@ -4,6 +4,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import * as CryptoJS from 'crypto-js';
 
 @Component({
   selector: 'app-registrar',
@@ -45,7 +46,7 @@ export class RegistrarComponent implements OnInit {
           if (!data) {
             const data = {
               email: this.usuario.email,
-              password: this.usuario.password
+              password: CryptoJS.AES.encrypt(this.usuario.password.trim(), 'PassTrueApp').toString()
             };
             this.usuarioService.registrarUsuario(data)
               .subscribe(

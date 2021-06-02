@@ -4,6 +4,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { MatDialogRef } from '@angular/material/dialog';
+import * as CryptoJS from 'crypto-js';
 
 @Component({
   selector: 'app-login',
@@ -37,22 +38,23 @@ export class LoginComponent implements OnInit {
   }
 
   loginUsuario(): void {
-    this.usuarioService.loginUsuario(this.usuario.email, this.usuario.password)
+    this.usuarioService.buscarEmail(this.usuario.email)
       .subscribe(
         data => {
           if (!data) {
-            this.toastr.error('Email o Contraseña Incorrectos', 'Verificar Datos');
+            this.toastr.error('Email no registrado', 'Verificar Datos');
           } else {
-            this.toastr.success('Bienvenido a Trueke App', 'Ingreso correcto');
-            localStorage.setItem('idUser', data.id);
-            this.router.navigate(['homelogin']);
-            this.dialogRef.close({
-              login: true
-            });
+            if (this.usuario.password === CryptoJS.AES.decrypt(data.password.trim(), 'PassTrueApp').toString(CryptoJS.enc.Utf8)) {
+              this.toastr.success('Bienvenido a Trueke App', 'Ingreso correcto');
+              localStorage.setItem('idUser', data.id);
+              this.router.navigate(['homelogin']);
+              this.dialogRef.close({
+                login: true
+              });
+            } else {
+              this.toastr.error('Email o Contraseña Incorrectos', 'Verificar Datos');
+            }
           }
-        },
-        error => {
-          console.log(error);
         });
   }
 
